@@ -1,0 +1,11 @@
+xgboost
+pandas
+scikit-learn
+numpy
+rank-bm25
+llama-cpp-python
+shap
+joblib
+huggingface_hub
+fastapi
+uvicorn

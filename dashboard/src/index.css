@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg-app: #f8fafc; /* Clean clinical slate-50 */
+  --bg-surface: #ffffff; /* Crisp clinical pure white */
+  --text-main: #0f172a; /* Slate 900 */
+  --text-muted: #64748b; /* Slate 500 */
+  --border-subtle: rgba(226, 232, 240, 0.9);
+  --border-card: #e2e8f0;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-solid: #ffffff;
+  --input-bg: #f1f5f9;
+  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+.dark {
+  --bg-app: #000000; /* Pure black */
+  --bg-surface: #0a0000; /* Dark reddish black */
+  --text-main: #f8fafc; /* Slate 100 */
+  --text-muted: #94a3b8; /* Slate 400 */
+  --border-subtle: rgba(51, 65, 85, 0.5);
+  --border-card: #262626;
+  --card-bg: rgba(15, 15, 17, 0.6);
+  --card-solid: #121214;
+  --input-bg: rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-background: var(--bg-app);
+  --color-surface: var(--bg-surface);
+  --color-primary: #ff3333;
+  --color-primary-dark: #cc0000;
+  --color-accent: #ff5555;
+  
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ff3333;
+
+  --shadow-neon-cyan: 0 0 10px rgba(255, 51, 51, 0.4), 0 0 20px rgba(255, 51, 51, 0.2);
+  --shadow-neon-red: 0 0 10px rgba(255, 51, 51, 0.5), 0 0 20px rgba(255, 51, 51, 0.3);
+  --shadow-glass: var(--shadow-card);
+
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-background text-slate-900 dark:text-slate-100 antialiased overflow-hidden selection:bg-primary/30 transition-colors duration-200;
+  }
+
+  /* Adaptive sleek scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-700 rounded;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-400 dark:bg-slate-500;
+  }
+  
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #94a3b8 transparent;
+  }
+  .dark * {
+    scrollbar-color: #334155 transparent;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/85 dark:bg-neutral-900/50 backdrop-blur-xl border border-slate-200/90 dark:border-neutral-800 shadow-sm dark:shadow-glass transition-all duration-300 text-slate-800 dark:text-slate-100;
+  }
+  
+  .glass-panel-accent {
+    @apply bg-white/90 dark:bg-neutral-900/60 backdrop-blur-xl border border-primary/40 dark:border-primary/30 shadow-[0_0_15px_rgba(255,51,51,0.15)] dark:shadow-neon-red transition-all duration-300;
+  }
+
+  .glass-button {
+    @apply bg-white/90 dark:bg-neutral-900/80 backdrop-blur-md border border-slate-200 dark:border-neutral-700 hover:bg-slate-100 dark:hover:bg-neutral-800 hover:border-primary/50 transition-all duration-300 text-slate-700 dark:text-white font-medium shadow-sm dark:shadow-none;
+  }
+}
